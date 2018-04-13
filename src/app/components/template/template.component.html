@@ -1,16 +1,19 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form>
+<form (ngSubmit)="guardar()" novalidate>
 
   <div>
-
+    <!-- ngModel necesita siempre que pogamos tambien el atributo nombre -->
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
 
         <input class="form-control"
                type="text"
-               placeholder="Nombre">
+               placeholder="Nombre"
+               name="nombre"
+               ngModel
+               required>
       </div>
     </div>
 
@@ -20,7 +23,9 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Apellido">
+               placeholder="Apellido"
+               name="apellido"
+               ngModel>
       </div>
     </div>
 
@@ -32,7 +37,9 @@
 
       <input class="form-control"
              type="email"
-             placeholder="Correo electrónico">
+             placeholder="Correo electrónico"
+             name="correo"
+             ngModel>
     </div>
   </div>
 
