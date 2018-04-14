@@ -2,19 +2,17 @@
 <hr>
 <form [formGroup]="form" (ngSubmit)="guardar()">
 
-  <div>
-    <!-- ngModel necesita siempre que pogamos tambien el atributo nombre -->
+  <div formGroupName="nombrecompleto"> 
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
-
         <input  class="form-control"
-                [ngClass]="{'is-invalid': form.get('nombre').errors?.required && form.get('apellido').touched}"
+                [ngClass]="{'is-invalid': form.get('nombrecompleto.nombre').errors?.required && form.get('nombrecompleto.apellido').touched}"
                 type="text"
                 placeholder="Nombre"
                 name="nombre"
                 formControlName="nombre">
-        <div class="invalid-feedback" *ngIf="form.controls['nombre'].errors?.required">
+        <div class="invalid-feedback" *ngIf="form.get('nombrecompleto.nombre').errors?.required">
           Este campo es requerido.
         </div>
       </div>
@@ -23,14 +21,13 @@
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
-
         <input  class="form-control"
-                [ngClass]="{'is-invalid': form.get('apellido').errors?.required && form.get('apellido').touched}"
+                [ngClass]="{'is-invalid': form.get('nombrecompleto.apellido').errors?.required && form.get('nombrecompleto.apellido').touched}"
                 type="text"
                 placeholder="Apellido"
                 name="apellido"
                 formControlName="apellido">
-        <div class="invalid-feedback" *ngIf="form.controls['apellido'].errors?.required">
+        <div class="invalid-feedback" *ngIf="form.get('nombrecompleto.apellido').errors?.required">
           Este campo es requerido.
         </div>
       </div>
