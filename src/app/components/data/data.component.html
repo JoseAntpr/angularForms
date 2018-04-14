@@ -7,7 +7,7 @@
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
         <input  class="form-control"
-                [ngClass]="{'is-invalid': form.get('nombrecompleto.nombre').errors?.required && form.get('nombrecompleto.apellido').touched}"
+                [ngClass]="{'is-invalid': form.get('nombrecompleto.nombre').errors?.required && form.get('nombrecompleto.nombre').touched}"
                 type="text"
                 placeholder="Nombre"
                 name="nombre"
@@ -60,6 +60,7 @@
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
       <button 
+        [disabled]="form.invalid"
         type="submit" 
         class="btn btn-outline-primary" >
           Guardar
