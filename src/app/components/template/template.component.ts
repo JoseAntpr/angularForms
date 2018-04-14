@@ -12,14 +12,28 @@ export class TemplateComponent {
   usuario: Object = {
     nombre: null,
     apellido: null,
-    correo: null
+    correo: null,
+    pais: "",
+    sexo: "Hombre",
+    acepta: true
   }
+
+  paises = [{
+    codigo: "CRI",
+    nombre: "Costa Rica"
+  },
+  {
+    codigo: "ES",
+    nombre: "España"
+  }]
+
+  sexos = ["Hombre", "Mujer"]
 
   ngOnInit() {
   }
 
   guardar(form: NgForm){
-    console.log("Formulario posteado", form, form.value, this.usuario);
+    console.log("Formulario posteado", form);
   }
 
 }
