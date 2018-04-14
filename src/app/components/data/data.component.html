@@ -50,11 +50,23 @@
           Este campo es requerido.
         </div>
         <div *ngIf="form.controls['correo'].errors?.pattern">
-            Este campo es requerido.
+            El patron del correo es erroneo
         </div>
       </div>
     </div>
   </div>
+  <div class="form-group row">
+      <label class="col-2 col-form-label">Correo</label>
+      <div class="col-md-8" formArrayName="pasatiempos">
+        <input  *ngFor="let pasatiempo of form.controls['pasatiempos'].controls; let i = index"
+                [formControlName]="i"
+                class="form-control"
+                type="text">
+      </div>
+      <button (click)="agregarPasatiempo()" type="button" class="btn btn-primary">
+        Nuevo
+      </button>
+    </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
