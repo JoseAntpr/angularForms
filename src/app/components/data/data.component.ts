@@ -22,7 +22,7 @@ export class DataComponent {
     this.form = new FormGroup({
       'nombrecompleto': new FormGroup({
         'nombre': new FormControl('', [Validators.required, ]),
-        'apellido': new FormControl('', [Validators.required, ]),
+        'apellido': new FormControl('', [Validators.required, this.noPalacios ]),
       }),
       'correo': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$") ]),
       'pasatiempos': new FormArray([ 
@@ -33,15 +33,24 @@ export class DataComponent {
     //this.form.setValue( this.usuario );
   }
 
-  guardar(){
-    console.log( this.form.value, this.form, this.form.valid);
-    this.form.reset({})
-  }
-
   agregarPasatiempo(){
     (<FormArray> this.form.controls['pasatiempos']).push(
       new FormControl('', Validators.required)
     )
+  }
+
+  noPalacios( control: FormControl): {[s:string]: boolean}{
+    if(control.value === "palacios"){
+      return{
+        nopalacios:true
+      }
+    }
+    return null
+  }
+
+  guardar(){
+    console.log( this.form.value, this.form, this.form.valid);
+    this.form.reset({})
   }
 
 
