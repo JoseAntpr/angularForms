@@ -34,7 +34,11 @@ export class DataComponent {
       'password2': new FormControl('')
     })
 
-    this.form.controls['password2'].setValidators([Validators.required, this.noigual.bind(this.form)])
+    this.form.controls['password2'].setValidators([Validators.required, this.noigual.bind(this.form)]);
+
+    this.form.controls['username'].valueChanges.subscribe( data => {
+      console.log(data);
+    });
 
     //this.form.setValue( this.usuario );
   }
