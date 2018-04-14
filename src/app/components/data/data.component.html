@@ -9,10 +9,14 @@
       <div class="col-8">
 
         <input  class="form-control"
+                [ngClass]="{'is-invalid': form.get('nombre').errors?.required && form.get('apellido').touched}"
                 type="text"
                 placeholder="Nombre"
                 name="nombre"
                 formControlName="nombre">
+        <div class="invalid-feedback" *ngIf="form.controls['nombre'].errors?.required">
+          Este campo es requerido.
+        </div>
       </div>
     </div>
 
@@ -21,10 +25,14 @@
       <div class="col-8">
 
         <input  class="form-control"
+                [ngClass]="{'is-invalid': form.get('apellido').errors?.required && form.get('apellido').touched}"
                 type="text"
                 placeholder="Apellido"
                 name="apellido"
                 formControlName="apellido">
+        <div class="invalid-feedback" *ngIf="form.controls['apellido'].errors?.required">
+          Este campo es requerido.
+        </div>
       </div>
     </div>
 
@@ -35,10 +43,19 @@
     <div class="col-md-8">
 
       <input  class="form-control"
+              [ngClass]="{'is-invalid': (form.get('correo').errors?.required || form.get('correo').errors?.pattern) && form.get('correo').touched}"
               type="email"
               placeholder="Correo electrónico"
               name="correo"
               formControlName="correo">
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls['correo'].errors?.required">
+          Este campo es requerido.
+        </div>
+        <div *ngIf="form.controls['correo'].errors?.pattern">
+            Este campo es requerido.
+        </div>
+      </div>
     </div>
   </div>
 
