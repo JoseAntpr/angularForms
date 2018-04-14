@@ -74,6 +74,25 @@
     </div>
 
     <div class="form-group row">
+        <label class="col-2 col-form-label">Username</label>
+        <div class="col-md-8">
+          <input  class="form-control"
+          [ngClass]="{'is-invalid': (form.get('username').errors?.required || form.get('username').errors?.existe) && form.get('username').touched}"
+                  type="text"
+                  placeholder="Usuario "
+                  formControlName="username">
+          <div class="invalid-feedback">
+            <div *ngIf="form.controls['username'].errors?.required">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="form.controls['username'].errors?.existe">
+              Este usuario ya existe
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group row">
         <label class="col-2 col-form-label">Password1</label>
         <div class="col-md-8">
           <input  class="form-control"
@@ -119,6 +138,6 @@
       </button>
     </div>
   </div>
-
+{{form.status}}
 
 </form>
