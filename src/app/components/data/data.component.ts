@@ -27,8 +27,12 @@ export class DataComponent {
       'correo': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$") ]),
       'pasatiempos': new FormArray([ 
         new FormControl('Correr', Validators.required)
-      ])
+      ]),
+      'password1': new FormControl('', Validators.required),
+      'password2': new FormControl('')
     })
+
+    this.form.controls['password2'].setValidators([Validators.required, this.noigual.bind(this.form)])
 
     //this.form.setValue( this.usuario );
   }
@@ -43,6 +47,16 @@ export class DataComponent {
     if(control.value === "palacios"){
       return{
         nopalacios:true
+      }
+    }
+    return null
+  }
+
+  noigual( control: FormControl): {[s:string]: boolean}{
+    let form: any = this;
+    if(control.value !== form.controls['password1'].value){
+      return{
+        noiguales:true
       }
     }
     return null

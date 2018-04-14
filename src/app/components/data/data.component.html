@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="form-group row">
-      <label class="col-2 col-form-label">Correo</label>
+      <label class="col-2 col-form-label">Pasatiempos</label>
       <div class="col-md-8" formArrayName="pasatiempos">
         <input  *ngFor="let pasatiempo of form.controls['pasatiempos'].controls; let i = index"
                 [formControlName]="i"
@@ -72,6 +72,41 @@
         Nuevo
       </button>
     </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Password1</label>
+        <div class="col-md-8">
+          <input  class="form-control"
+          [ngClass]="{'is-invalid': (form.get('password1').errors?.required) && form.get('password1').touched}"
+                  type="password"
+                  placeholder="password1"
+                  formControlName="password1">
+          <div class="invalid-feedback">
+            <div *ngIf="form.controls['password1'].errors?.required">
+              Este campo es requerido.
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Password1</label>
+          <div class="col-md-8">
+            <input  class="form-control"
+                    [ngClass]="{'is-invalid': (form.get('password2').errors?.required || form.get('password2').errors?.noiguales) && form.get('password2').touched}"
+                    type="password"
+                    placeholder="password2"
+                    formControlName="password2">
+            <div class="invalid-feedback">
+              <div *ngIf="form.controls['password2'].errors?.required">
+                Este campo es requerido.
+              </div>
+              <div *ngIf="form.controls['password2'].errors?.noiguales">
+                Las contraseñas no son iguales
+              </div>
+            </div>
+          </div>
+        </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
