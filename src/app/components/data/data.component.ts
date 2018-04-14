@@ -12,14 +12,14 @@ export class DataComponent {
 
   constructor() { 
     this.form = new FormGroup({
-      'nombre': new FormControl('Jose', []),
-      'apellido': new FormControl(),
-      'correo': new FormControl()
+      'nombre': new FormControl('Jose', [Validators.required, ]),
+      'apellido': new FormControl('', [Validators.required, ]),
+      'correo': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$") ])
     })
   }
 
   guardar(){
-    console.log( this.form.value );
+    console.log( this.form.value, this.form, this.form.valid);
   }
 
 
